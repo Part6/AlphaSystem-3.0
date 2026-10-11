@@ -4,7 +4,10 @@ AlphaSystem:
    - Java;
    - MySQL;
    - Java Web Spring MVC;
-   - Thymeleaf.
+   - Thymeleaf;
+   - Html;
+   - Css;
+   - JavaScript;
 - Desenvolvedor: Gustavo Henrique Bertassi.
   
 
