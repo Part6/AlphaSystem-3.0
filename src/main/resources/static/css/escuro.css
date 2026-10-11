@@ -125,7 +125,7 @@ body{
     align-items:center
 }
 
-.btnAcao, .btnExcluir{
+.btnAcao,.btnAcao:visited, .btnExcluir{
     border:1px solid var(--purple);
     border-radius:18px;
     padding:8px 20px;
@@ -136,12 +136,17 @@ body{
 
 }
 
-.btnAcao, .btnExcluir:hover{
+.btnExcluir:hover{
     background:#2a0349;
     color:#fff
 }
 
 .btnAcao:hover{
+    background:#2a0349;
+    color:#fff
+}
+
+.btnAcao:visited:hover{
     background:#2a0349;
     color:#fff
 }

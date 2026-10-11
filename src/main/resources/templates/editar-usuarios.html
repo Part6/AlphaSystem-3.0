@@ -43,8 +43,15 @@
                             </div>
                         </div>
                         <div class="actions">
-                            <a class="btn outline" th:href="@{/menu/menuCadastro}"> <button class="btn"> Sair </button></a>
-                            <button class="btn" onclick="limparFormulario('formUsuario')">Limpar</button>
+                            <a class="btn outline"
+                                th:href="@{/menu/menuGerente/ListaUsuario}">
+                                 Sair
+                            </a>
+                            <button type="button"
+                                    class="btn"
+                                    onclick="limparFormulario('formEditarUsuario')">
+                                Limpar
+                            </button>
                             <button class="btn" type="submit" >Salvar</button>
                         </div>
                     </form>

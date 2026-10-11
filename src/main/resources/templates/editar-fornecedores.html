@@ -27,8 +27,16 @@
                         </div>
 
                         <div class="actions">
-                            <a class="btn outline" th:href="@{/menu/menuCadastro}"> <button class="btn" type="reset"> Sair </button></a>
-                            <button class="btn" onclick="limparFormulario('formFornecedor')">Limpar</button>
+                            <a class="btn outline"
+                                th:href="@{/menu/menuGerente/ListaFornecedor}">
+                                 Sair
+                            </a>
+                            <button type="button"
+                                    class="btn"
+                                    onclick="limparFormulario('formEditarFornecedor')">
+                                Limpar
+                            </button>
+                            
                             <button class="btn" type="submit" >Salvar</button>
                         </div>
                     </form>
