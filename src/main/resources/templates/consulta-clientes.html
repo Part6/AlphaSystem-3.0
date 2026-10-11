@@ -6,7 +6,6 @@
         <title>Consulta de Clientes - AlphaSystem</title>
         <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
         <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
-        <link rel="stylesheet" th:href="@{/css/style.css}">
     </head>
     <body>
         <div class="page">
@@ -57,7 +56,7 @@
 
 
                                 <td>
-                                    <a th:href="@{/editar/cliente/{id}(id=${cliente.id})}"> <button type="reset">  Editar </button> </a>
+                                    <a th:href="@{/editar/cliente/{id}(id=${cliente.id})}"> <button type="reset" class="btnAcao">  Editar </button> </a>
                                     </td>
                                 <td>
                                     <button type="button"

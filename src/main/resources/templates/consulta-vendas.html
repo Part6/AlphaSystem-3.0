@@ -21,6 +21,7 @@
                                 <th>Observações</th>
                                 <th>Data</th>
                                 <th>Produto</th>
+                                <th>Quantidade de itens</th>
                             </tr>
                         </thead>
                         <tbody id="tabelaVendas">
@@ -31,10 +32,11 @@
                                 <td th:text="${item.venda.data}"></td>
                                 <td th:text="${item.venda.observacoes}"></td>
                                 <td th:text="${item.produto.nome}"></td>
+                                <td th:text="${item.venda.quantidadeItens}"></td>
 
                                 <td>
                                     
-                                    <a th:href="@{/editar/vendas/{id}(id=${item.venda.idVenda})}"> <button type="reset">  Editar </button> </a>
+                                    <a th:href="@{/editar/vendas/{id}(id=${item.venda.idVenda})}"> <button type="reset" class="btnAcao">  Editar </button> </a>
                                 </td>
                                 <td>
                                    <button type="button"

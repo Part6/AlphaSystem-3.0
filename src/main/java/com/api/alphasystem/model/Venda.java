@@ -32,6 +32,7 @@ public class Venda {
     
     private String observacoes;
     private LocalDate data;
+    private int quantidadeItens;
 
 
     public int getIdVenda() { return idVenda; }
@@ -45,5 +46,9 @@ public class Venda {
 
     public LocalDate getData() { return data; }
     public void setData(LocalDate data) { this.data = data; }
+    
+    public int getQuantidadeItens() {return quantidadeItens;}
+
+    public void setQuantidadeItens(int quantidade) {this.quantidadeItens = quantidade;}
 
 }

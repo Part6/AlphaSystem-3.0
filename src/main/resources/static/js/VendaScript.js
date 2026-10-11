@@ -11,6 +11,7 @@ $(document).ready(function () {
         const data = $("#data").val();
         const produtoId = $("#produto").val();
         const observacoes = $("#observacoes").val();
+        const qnt = $("#qnt").val();
 
         if (clienteId === "") {
             alert("Digite o nome do Cliente!");
@@ -31,13 +32,18 @@ $(document).ready(function () {
             alert("Digite as Observacoes da Venda!");
             return;
         }
-
+        
+        if (qnt === "") {
+            alert("Digite a quantidade de itens da Venda!");
+            return;
+        }
 
         const venda = {
             clienteId: clienteId,
             produtoId: produtoId,
             data: data,
-            observacoes: observacoes
+            observacoes: observacoes,
+            quantidadeItens: qnt
         };
         
         $.ajax({
@@ -75,6 +81,7 @@ $(document).ready(function () {
         const data = $("#data").val();
         const produtoId = $("#produto").val();
         const observacoes = $("#observacoes").val();
+        const qnt = $("#qnt").val();
 
         if (clienteId === "") {
             alert("Digite o nome do Cliente!");
@@ -95,13 +102,18 @@ $(document).ready(function () {
             alert("Digite as Observacoes da Venda!");
             return;
         }
-
+        
+        if (qnt === "") {
+            alert("Digite a quantidade de itens da Venda!");
+            return;
+        }
 
         const venda = {
             clienteId: clienteId,
             produtoId: produtoId,
             data: data,
-            observacoes: observacoes
+            observacoes: observacoes,
+            quantidadeItens: qnt
         };
         
         console.log("id: " + id);

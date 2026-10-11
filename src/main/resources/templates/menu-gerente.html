@@ -6,16 +6,15 @@
         <title>Menu Principal - AlphaSystem</title>
         <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
         <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
-        <link rel="stylesheet" th:href="@{/css/style.css}">
     </head>
     <body>
         <div class="page">
-            <header class="header"><h1>LISTA DE CONSULTA</h1></header>
+            <header class="header"><h1>Menu de gerencia</h1></header>
             <main class="content">
                 <section class="welcome">
                     <nav class="menu"> 
-                        <a class="btn" th:href="@{/menu/menuGerente/ListaFornecedor}"> <button class="btn" type="reset">Excluir Fornecedor</button></a>
-                        <a class="btn" th:href="@{/menu/menuGerente/ListaUsuario}"> <button class="btn" type="reset">Excluir Usuarios</button></a>
+                        <a class="btn" th:href="@{/menu/menuGerente/ListaFornecedor}"> <button class="btn" type="reset"> Fornecedores</button></a>
+                        <a class="btn" th:href="@{/menu/menuGerente/ListaUsuario}"> <button class="btn" type="reset"> Usuarios </button></a>
                         <a class="btn outline" th:href="@{/menu}"> <button class="btn" type="reset"> Sair</button></a>
                     </nav>
                 </section>

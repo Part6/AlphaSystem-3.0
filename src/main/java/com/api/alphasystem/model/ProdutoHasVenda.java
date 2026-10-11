@@ -22,7 +22,6 @@ public class ProdutoHasVenda {
     @JoinColumn(name = "venda_id")
     private Venda venda;
 
-    private int quantidade;
 
     public int getId() {
         return id;
@@ -48,11 +47,5 @@ public class ProdutoHasVenda {
         this.venda = venda;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
+    
 }

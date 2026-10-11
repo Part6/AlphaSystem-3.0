@@ -6,7 +6,6 @@
         <title>AlphaSystem - AlphaSystem</title>
         <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
         <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
-        <link rel="stylesheet" th:href="@{/css/style.css}">
     </head>
     <body>
         <div class="page">
@@ -14,7 +13,11 @@
                 <main class="content">
                     <section class="welcome">
                         <h2>ALPHASYSTEM</h2>
+                          <h3>Olá <span th:text="${nome}"/> !</h3> 
+                            <p>Seja muito bem-vindo(a) ao site! </p>
                         <nav class="menu">
+                              <p>O estilo atual da página é <strong th:text="${css}" /></p> 
+                                <p>Você pode configurar suas preferências de exibição <a href="/preferencias">neste link</a></p> 
                             <a class="btn" th:href="@{/login}"><button class="btn" type="reset">Entrar</button></a>
                         </nav>
                 </section>

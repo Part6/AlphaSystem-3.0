@@ -1,9 +1,10 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.api.alphasystem.controll;
 
+import com.api.alphasystem.dto.VendaCadastroRequest;
 import com.api.alphasystem.model.*;
 import com.api.alphasystem.repository.*;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,11 @@ import jakarta.servlet.http.HttpServletResponse;
 //import com.api.alphasystem.model.Preferencia;
 import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller 
@@ -64,7 +68,14 @@ public class MiscControll {
         return "index";
     }
     
-    @PostMapping("/") 
+    @RequestMapping("/preferencias") 
+    public String preferencias(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,Model model){
+        model.addAttribute("nome", nome); 
+        model.addAttribute("css", tema);
+        return "preferencias"; 
+    }
+    
+    @PostMapping("/preferencias") 
     public ModelAndView gravaPreferencias(@ModelAttribute Preferencia pref, HttpServletResponse response){ 
 
         Cookie cookiePrefNome = new Cookie("pref-nome", pref.getNome()); 
@@ -116,14 +127,24 @@ public class MiscControll {
     
     @GetMapping("/menu/menuGerente")
     public String menuGerente(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if (!"Gerente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu";
+        }    
        model.addAttribute("css", tema);
         return "menu-gerente";
     }
     
     @GetMapping("/menu/menuGerente/ListaFornecedor")
     public String GerenteFornecedor(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if (!"Gerente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return null;
+        }    
        model.addAttribute("css", tema);
        
         model.addAttribute("fornecedores", fornecedorRepository.findAll());
@@ -132,7 +153,12 @@ public class MiscControll {
     
     @GetMapping("/menu/menuGerente/ListaUsuario")
     public String GerenteUsuario(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if (!"Gerente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu";
+        }    
         model.addAttribute("css", tema);
         List<Usuario> usuario = usuarioRepository.findAll();
 
@@ -143,8 +169,14 @@ public class MiscControll {
     // CADASTRO DE CLIENTE
     @GetMapping("/menu/menuCadastro/cadastroCliente")
     public String cadastroCliente(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
-       model.addAttribute("css", tema);
+            Model model,HttpSession session) {
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu-cadastro";
+        } 
+        
+        model.addAttribute("css", tema);
        
         Cliente cliente = new Cliente();
         Endereco endereco = new Endereco();
@@ -155,19 +187,15 @@ public class MiscControll {
         return "cadastro-clientes";
     }
     
-    /*@PostMapping("/menu/menuCadastro/cadastroCliente")
-    public String processarCliente(
-            @ModelAttribute("cliente") Cliente cliente) {
-
-        clienteRepository.save(cliente);
-
-        return "redirect:/menu/menuCadastro";
-    } */
-    
     //CADASTRO DE PRODUTO
     @GetMapping("/menu/menuCadastro/cadastroProduto")
     public String cadastroProduto(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu-cadastro";
+        } 
         
         model.addAttribute("css", tema);
         model.addAttribute("produto", new Produto());
@@ -179,7 +207,12 @@ public class MiscControll {
     //CADASTRO DE FORNECEDOR
     @GetMapping("/menu/menuCadastro/cadastroFornecedor")
     public String cadastroFornecedor(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if ("Atendente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu-cadastro";
+        }  
        model.addAttribute("css", tema);
         model.addAttribute("fornecedor", new Fornecedor());
         return "cadastro-fornecedores";
@@ -197,7 +230,12 @@ public class MiscControll {
     //CADASTRO DE USUARIO
     @GetMapping("/menu/menuCadastro/cadastroUsuario")
     public String cadastroUsuario(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if (!"Gerente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu-cadastro";
+        }  
        model.addAttribute("css", tema);
         model.addAttribute("usuario", new Usuario());
         return "cadastro-usuarios";
@@ -207,11 +245,17 @@ public class MiscControll {
     //CADASTRO DE VENDA
     @GetMapping("/menu/menuCadastro/cadastroVenda")
     public String cadastroVenda(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu-cadastro";
+        } 
         model.addAttribute("css", tema);
         model.addAttribute("clientes", clienteRepository.findAll());
         model.addAttribute("produtos", produtoRepository.findAll());
         model.addAttribute("venda", new Venda());
+        model.addAttribute("ProdutoHasVenda", new ProdutoHasVenda());
         return "registro-vendas";
     }
     
@@ -228,7 +272,12 @@ public class MiscControll {
     
     @GetMapping("/menu/menuConsulta/consultaClientes")
     public String consultaCliente(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu-consulta";
+        }   
        model.addAttribute("css", tema);
        List<Cliente> clientes = clienteRepository.findAll();
 
@@ -239,7 +288,12 @@ public class MiscControll {
     //CONSULTA DE PRODUTOS
     @GetMapping("/menu/menuConsulta/consultaProdutos")
     public String consultaProdutos(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if ("Atendente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu-consulta";
+        }   
        model.addAttribute("css", tema);
        List<Produto> produtos = produtoRepository.findAll();
 
@@ -252,7 +306,12 @@ public class MiscControll {
     //CONSULTA DE VENDAS
     @GetMapping("/menu/menuConsulta/consultaVendas")
     public String consultaVendas(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) {
+        
+        if ("Atendente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return "menu-consulta";
+        }  
         
         model.addAttribute("css", tema);
 
@@ -263,7 +322,12 @@ public class MiscControll {
     // EDIÇÃO DE CLIENTE
     @GetMapping("/editar/cliente/{id}")
     public String EditarCliente(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            @PathVariable Integer id,Model model) { 
+            @PathVariable Integer id,Model model,HttpSession session) {
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return null;
+        }  
        model.addAttribute("css", tema);
        
         Cliente cliente = clienteRepository.findById(id).orElse(null);
@@ -279,7 +343,12 @@ public class MiscControll {
     //EDIÇÃO DE PRODUTO
     @GetMapping("/editar/produtos/{id}")
     public String EditarProduto(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            @PathVariable Integer id,Model model) { 
+            @PathVariable Integer id,Model model,HttpSession session) {
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return null;
+        }   
         
         Produto produto = produtoRepository.findById(id).orElse(null);
         
@@ -293,7 +362,12 @@ public class MiscControll {
     //EDIÇÃO DE VENDA
     @GetMapping("/editar/vendas/{id}")
     public String editarVenda(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-             @PathVariable Integer id,Model model) { 
+             @PathVariable Integer id,Model model,HttpSession session) {
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return null;
+        }  
         model.addAttribute("css", tema);
         
         Venda venda = vendaRepository.findById(id).orElse(null);
@@ -306,7 +380,12 @@ public class MiscControll {
     
     @GetMapping("/editar/fornecedor/{id}")
     public String editarFornecedor(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-             @PathVariable Integer id,Model model) { 
+             @PathVariable Integer id,Model model,HttpSession session) {
+        
+        if ("Atendente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return null;
+        }   
         model.addAttribute("css", tema);
         
         Fornecedor fornecedor = fornecedorRepository.findById(id).orElse(null);
@@ -317,7 +396,12 @@ public class MiscControll {
     
     @GetMapping("/editar/usuario/{id}")
     public String editarUsuario(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-             @PathVariable Integer id,Model model) { 
+             @PathVariable Integer id,Model model,HttpSession session) {
+        
+        if (!"Gerente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return null;
+        }   
         model.addAttribute("css", tema);
         
         Usuario Usuario = usuarioRepository.findById(id).orElse(null);

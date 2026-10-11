@@ -8,6 +8,7 @@ public class VendaCadastroRequest {
     private Integer produtoId;
     private LocalDate data;
     private String observacoes;
+    private int quantidadeItens;
 
     public Integer getClienteId() {
         return clienteId;
@@ -40,5 +41,13 @@ public class VendaCadastroRequest {
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
+    }
+    
+    public int getQuantidadeItens(){
+        return this.quantidadeItens;
+    }
+    
+    public void setQuantidadeItens(int qnt){
+        this.quantidadeItens = qnt;
     }
 }

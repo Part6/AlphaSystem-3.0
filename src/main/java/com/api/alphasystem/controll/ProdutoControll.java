@@ -15,6 +15,7 @@ import com.api.alphasystem.model.Produto;
 import com.api.alphasystem.repository.FornecedorProdutoRepository;
 import com.api.alphasystem.repository.FornecedorRepository;
 import com.api.alphasystem.repository.ProdutoHasVendaRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -42,7 +43,12 @@ public class ProdutoControll {
 
     @PostMapping("/criar")
     public Produto criarProduto(
-            @RequestBody ProdutoCadastroRequest dados) {
+            @RequestBody ProdutoCadastroRequest dados, HttpSession session) {
+        
+         if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para cadastrar produtos.");
+            return null;
+        } 
 
         // 1. Busca o fornecedor que foi selecionado
         Fornecedor fornecedor = fornecedorRepository.findById(dados.getFornecedorId()).orElse(null);
@@ -110,7 +116,12 @@ public class ProdutoControll {
     
     
     @PutMapping("/{id}") 
-    public Produto atualizarProduto(@PathVariable int id, @RequestBody ProdutoCadastroRequest dados) { 
+    public Produto atualizarProduto(@PathVariable int id, @RequestBody ProdutoCadastroRequest dados, HttpSession session) { 
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return null;
+        } 
         
         Produto produtoExistente = cr.findById(id).orElse(null);
         Fornecedor fornecedor = fornecedorRepository.findById(dados.getFornecedorId()).orElse(null);
@@ -144,9 +155,12 @@ public class ProdutoControll {
     
 
     @DeleteMapping("/{id}") 
-    public boolean deletarProduto(@PathVariable int id) { 
+    public boolean deletarProduto(@PathVariable int id, HttpSession session) { 
         
-        
+        if (!"Gerente".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar produtos.");
+            return false;
+        } 
         
         Produto produto = cr.findById(id)
             .orElse(null);

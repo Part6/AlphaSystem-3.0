@@ -17,6 +17,8 @@ import com.api.alphasystem.model.Cliente;
 import com.api.alphasystem.model.Endereco;
 import com.api.alphasystem.repository.EnderecoRepository;
 import com.api.alphasystem.repository.VendaRepository;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.http.ResponseEntity;
 
 
 @RestController 
@@ -39,7 +41,16 @@ public class ClienteControll {
     }
 
     @PostMapping("/criar") 
-    public Cliente criarCliente(@RequestBody Cliente cliente) { 
+    public Cliente criarCliente(@RequestBody Cliente cliente, HttpSession session) { 
+        
+        // System.out.print("cargo: "+session.getAttribute("usuarioTipo").toString());
+        
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            System.out.print("n foi");
+            ResponseEntity.status(403).body("Você não tem permissão para cadastrar clientes.");
+            return null;
+        } 
+        
         if (cliente.getEndereco() != null) {
             Endereco enderecoSalvo = er.save(cliente.getEndereco());
 
@@ -60,7 +71,13 @@ public class ClienteControll {
     
     
     @PutMapping("/{id}") 
-    public Cliente atualizarCliente(@PathVariable int id, @RequestBody Cliente cliente) { 
+    public Cliente atualizarCliente(@PathVariable int id, @RequestBody Cliente cliente,HttpSession session) { 
+        
+
+        if ("Financeiro".equals(session.getAttribute("usuarioTipo").toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para atualizar clientes.");
+            return null;
+        } 
         
         Cliente clienteExistente = cr.findById(id).orElse(null);
         if(clienteExistente == null)
@@ -90,8 +107,16 @@ public class ClienteControll {
     } 
 
     @DeleteMapping("/{id}") 
-    public boolean deletarCliente(@PathVariable int id) { 
-         
+    public boolean deletarCliente(@PathVariable int id,HttpSession session) { 
+        
+        Object cargo = session.getAttribute("usuarioTipo");
+
+        if ("Financeiro".equals(cargo.toString())) {
+            ResponseEntity.status(403).body("Você não tem permissão para excluir clientes.");
+            return false;
+        } 
+        
+        
         Cliente cliente = cr.findById(id).orElse(null);
 
         if (cliente == null) {
