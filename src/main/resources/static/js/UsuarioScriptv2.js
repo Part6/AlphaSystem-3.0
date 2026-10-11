@@ -115,10 +115,8 @@ $(document).ready(function () {
             data: JSON.stringify(usuario),
 
             success: function (resposta) {
-                console.log("Resposta completa do servidor:", resposta);
-                console.log("Tipo da resposta:", typeof resposta);
-                window.location.href = "/menu/menuGerente/ListaUsuarios";
-                alert("Resposta do servidor: " + JSON.stringify(resposta));
+                alert("Usuario cadastrado! ID: " + resposta.id);
+                window.location.href = "/menu/menuGerente/ListaUsuarios"; 
             },
 
             error: function (xhr) {

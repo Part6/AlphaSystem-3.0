@@ -74,10 +74,9 @@ $(document).ready(function () {
             data: JSON.stringify(produto),
 
             success: function (resposta) {
-                console.log("Resposta completa do servidor:", resposta);
-                console.log("Tipo da resposta:", typeof resposta);
 
-                alert("Resposta do servidor: " + JSON.stringify(resposta));
+                alert("Produto cadastrado! ID: " + resposta.id);
+                window.location.href = "menu/menuCadastro"; 
             },
 
             error: function () {

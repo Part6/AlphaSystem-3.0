@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="page">
-            <header class="header">EDIÇÃO DE USUÁRIOS</header>
+            <header class="header"><img th:src="@{/image/alpha.png}" height="50px"> EDIÇÃO DE USUÁRIOS</header>
             <main class="content">
                 <section class="panel">
                     <form id="formEditarUsuario"  th:object="${usuario}" >
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="actions">
-                            <a class="btn outline"
+                            <a class="btnSair"
                                 th:href="@{/menu/menuGerente/ListaUsuario}">
                                  Sair
                             </a>

@@ -21,15 +21,11 @@ $(document).ready(function () {
             contentType: "application/json",
             data: JSON.stringify({ login: login, senha: senha }),
             success: function (usuario) {
-                alert("Bem-vindo(a), " + usuario.nome + "!");
                 window.location.href = "/menu";
             },
             error: function (xhr) {
-                const mensagem = xhr.responseJSON && xhr.responseJSON.mensagem
-                    ? xhr.responseJSON.mensagem
-                    : "Não foi possível autenticar. Tente novamente.";
-                alert(mensagem);
-                console.error("Falha no login:", xhr.status, xhr.responseText);
+                console.log("Erro:", xhr);
+                alert("Não foi possível autenticar. Tente novamente.");
             }
         });
     });

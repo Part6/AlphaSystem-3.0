@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="page">
-            <header class="header">EDIÇÃO DE CLIENTES</header>
+            <header class="header"><img th:src="@{/image/alpha.png}" height="50px"> EDIÇÃO DE CLIENTES</header>
             <main class="content">
                 <section class="panel">
                     <form id="formEditarCliente"  th:object="${cliente}">
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="actions">
-                            <a class="btn outline"
+                            <a class="btnSair"
                                 th:href="@{/menu/menuConsulta/consultaClientes}">
                                  Sair
                             </a>

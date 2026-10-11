@@ -9,16 +9,26 @@
     </head>
     <body>
         <div class="page">
-            <header class="header">ALPHASYSTEM</header>
+            <header class="header"> <img th:src="@{/image/alpha.png}" height="50px"> </img> ALPHASYSTEM</header>
                 <main class="content">
                     <section class="welcome">
                          
-                          <h3>Seja muito bem-vindo(a) ao site <span th:text="${nome}"/> !</h3> 
+                          <h3>Seja muito bem-vindo(a) ao site, <span th:text="${nome}"/> !</h3> 
                             
                         <nav class="menu">
-                            <p>O estilo atual da página é <strong th:text="${css}" /> <br/>
-                                Você pode configurar suas preferências de exibição <a href="/preferencias">neste link</a></p> 
-                            <a class="btn" th:href="@{/login}"><button class="btn" type="reset">Entrar</button></a>
+                            <p class="texto"> O sistema AlphaSystem é desenvolvido para facilitar
+                                 o cadastro de produtos, clientes, fornecedores,
+                                  auxailiar no gerenciamento de uma empresa, assim como
+                                   registrar de vendas e permitir a consulta do estoque da
+                                    loja. Outro dos seus focos é a acessibilidade e na
+                                     eliminação do uso de planilhas para a consulta das
+                                      operações da empresa por meio do uso de banco de dados.
+                                       Oque está presente no software é para o melhor fluxo de
+                                        trabalho dos funcionários e armazenamento de dados de
+                                         maneira mais segura e organizada.  </p>
+                            <br/>
+                            <p>O estilo atual da página é <strong th:text="${css}" /><br/>Você pode configurar suas preferências de exibição <a href="/preferencias">neste link</a></p> 
+                            <a class="btnSair" th:href="@{/login}">Entrar</a>
                         </nav>
                 </section>
             </main>

@@ -9,14 +9,14 @@
     </head>
     <body>
         <div class="page">
-            <header class="header"><h1>LISTA DE CONSULTA</h1></header>
+            <header class="header"><img th:src="@{/image/alpha.png}" height="50px"> LISTA DE CONSULTA</header>
             <main class="content">
                 <section class="welcome">
                     <nav class="menu"> 
                         <a class="btn" th:href="@{/menu/menuConsulta/consultaClientes}"> <button class="btn" type="reset">Consultar Clientes</button></a>
                         <a class="btn" th:href="@{/menu/menuConsulta/consultaProdutos}"> <button class="btn" type="reset">Consultar Produtos</button></a>
                         <a class="btn" th:href="@{/menu/menuConsulta/consultaVendas}"> <button class="btn" type="reset">Consultar Vendas</button></a>
-                        <a class="btn outline" th:href="@{/menu}"> <button class="btn" type="reset"> Sair</button></a>
+                        <a class="btnSair" th:href="@{/menu}">  Sair </a>
                     </nav>
                 </section>
             </main>

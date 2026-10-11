@@ -8,7 +8,7 @@
         <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
     <body>
         <div class="page">
-            <header class="header">EDIÇÃO DE PRODUTO </header>
+            <header class="header"><img th:src="@{/image/alpha.png}" height="50px"> EDIÇÃO DE PRODUTO </header>
             <main class="content">
                 <section class="panel">
                     <form id="formEditarProduto"  th:object="${produto}">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="actions">
-                            <a class="btn outline"
+                            <a class="btnSair"
                                 th:href="@{/menu/menuConsulta/consultaProdutos}">
                                  Sair
                             </a>

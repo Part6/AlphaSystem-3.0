@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="page">
-            <header class="header">CADASTRO DE FORNECEDORES</header>
+            <header class="header"><img th:src="@{/image/alpha.png}" height="50px"> CADASTRO DE FORNECEDORES</header>
             <main class="content"><section class="panel">
                 <form id="formFornecedor"  th:object="${fornecedor}">
                     <div class="form-grid">
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="actions">
-                            <a class="btn outline"
+                            <a class="btnSair"
                                 th:href="@{/menu/menuCadastro}">
                                  Sair
                             </a>

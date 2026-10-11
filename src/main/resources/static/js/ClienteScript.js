@@ -79,7 +79,7 @@ $(document).ready(function () {
             success: function (clienteCriado) {
 
                 alert("Cliente cadastrado! ID: " + clienteCriado.id);
-                
+                window.location.href = "menu/menuCadastro"; 
                 console.log("test2");
             },
 

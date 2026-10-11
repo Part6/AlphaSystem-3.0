@@ -9,13 +9,13 @@
     </head>
     <body>
         <div class="page">
-            <header class="header"><h1>Menu de gerencia</h1></header>
+            <header class="header"><img th:src="@{/image/alpha.png}" height="50px"> Menu de gerencia</header>
             <main class="content">
                 <section class="welcome">
                     <nav class="menu"> 
                         <a class="btn" th:href="@{/menu/menuGerente/ListaFornecedor}"> <button class="btn" type="reset"> Fornecedores</button></a>
                         <a class="btn" th:href="@{/menu/menuGerente/ListaUsuario}"> <button class="btn" type="reset"> Usuarios </button></a>
-                        <a class="btn outline" th:href="@{/menu}"> <button class="btn" type="reset"> Sair</button></a>
+                        <a class="btnSair" th:href="@{/menu}"> Sair </a>
                     </nav>
                 </section>
             </main>

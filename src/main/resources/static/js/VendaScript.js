@@ -57,10 +57,9 @@ $(document).ready(function () {
             data: JSON.stringify(venda),
 
             success: function (resposta) {
-                console.log("Resposta completa do servidor:", resposta);
-                console.log("Tipo da resposta:", typeof resposta);
 
-                alert("Resposta do servidor: " + JSON.stringify(resposta));
+                alert("Venda cadastrada! ID: " + resposta.id); ///menu/menuCadastro
+                window.location.href = "menu/menuCadastro"; 
             },
 
             error: function () {
@@ -130,7 +129,7 @@ $(document).ready(function () {
 
             success: function () {
                 
-                alert("Venda atualizado com sucesso!");
+                alert("Venda atualizada com sucesso!");
 
                 window.location.href = "/menu/menuConsulta/consultaVendas";
                 
