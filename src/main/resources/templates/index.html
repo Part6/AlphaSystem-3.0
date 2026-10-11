@@ -12,12 +12,12 @@
             <header class="header">ALPHASYSTEM</header>
                 <main class="content">
                     <section class="welcome">
-                        <h2>ALPHASYSTEM</h2>
-                          <h3>Olá <span th:text="${nome}"/> !</h3> 
-                            <p>Seja muito bem-vindo(a) ao site! </p>
+                         
+                          <h3>Seja muito bem-vindo(a) ao site <span th:text="${nome}"/> !</h3> 
+                            
                         <nav class="menu">
-                              <p>O estilo atual da página é <strong th:text="${css}" /></p> 
-                                <p>Você pode configurar suas preferências de exibição <a href="/preferencias">neste link</a></p> 
+                            <p>O estilo atual da página é <strong th:text="${css}" /> <br/>
+                                Você pode configurar suas preferências de exibição <a href="/preferencias">neste link</a></p> 
                             <a class="btn" th:href="@{/login}"><button class="btn" type="reset">Entrar</button></a>
                         </nav>
                 </section>

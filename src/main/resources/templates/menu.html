@@ -9,10 +9,10 @@
     </head>
     <body>
         <div class="page">
-            <header class="header">BEM VINDO USUÁRIO!</header>
+            <header class="header"> <h2>ALPHASYSTEM</h2></header>
             <main class="content">
                 <section class="welcome">
-                    <h2>BEM VINDO USUÁRIO!</h2>
+                    <h2>Bem Vindo <span th:text="${cargo}"/> <span th:text="${nome}"/> !</h2>
                     <nav class="menu">
                         
                         <a class="btn" th:href="@{/menu/menuCadastro}"> <button class="btn" type="reset">Cadastros</button></a>

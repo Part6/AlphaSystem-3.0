@@ -20,7 +20,7 @@
                                 <th>Localidade</th>
                             </tr>
                         </thead>
-                        <tbody id="tabelaProdutos">
+                        <tbody id="tabelaFornecedores">
                             <tr th:each="fornecedor : ${fornecedores}">
                                 <td th:text="${fornecedor.id}"></td>
                                 <td th:text="${fornecedor.nome}"></td>
@@ -29,7 +29,7 @@
                                 <td>
                                     
                                     <a th:href="@{/editar/fornecedor/{id}(id=${fornecedor.id})}"> <button type="reset" class="btnAcao">  Editar </button> </a>
-                                    </td> <!-- tormar cuidado -->
+                                    </td> 
                                 <td>
                                     <button type="button"
                                             class="btnExcluir"

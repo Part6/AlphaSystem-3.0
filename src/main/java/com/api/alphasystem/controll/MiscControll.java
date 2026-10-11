@@ -64,7 +64,7 @@ public class MiscControll {
     public String paginaInicial(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
             Model model) { 
         model.addAttribute("css", tema);
-        
+        model.addAttribute("nome", nome);
         return "index";
     }
     
@@ -106,8 +106,11 @@ public class MiscControll {
     
     @GetMapping("/menu")
     public String menu(@CookieValue(name="pref-nome", defaultValue="")String nome, @CookieValue(name="pref-estilo", defaultValue="claro")String tema,
-            Model model) { 
+            Model model,HttpSession session) { 
        model.addAttribute("css", tema);
+       model.addAttribute("cargo", session.getAttribute("usuarioTipo").toString());
+       model.addAttribute("nome", session.getAttribute("usuarioNome").toString()); //
+       
         return "menu";
     }
     
