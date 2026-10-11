@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login de Usuário - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">LOGIN DE USUÁRIO</header>
+            <main class="content">
+                <section class="login-panel">
+
+                    <div class="login-field">
+                        <label for="login">Login:</label>
+                        <input id="login" type="text" th:field="${usuario.login}" placeholder="...">
+                    </div>
+
+                    <div class="login-field">
+                        <label for="senha">Senha:</label>
+                        <input id="senha" type="password" th:field="${usuario.senha}" placeholder="...">
+                    </div>
+
+                    <div class="actions">
+                        <a class="btn outline" th:href="@{/}"><button class="btn" type="reset">Sair</button></a>
+                        <button class="btn" type="reset">Limpar</button>
+                        <a class="btn outline" th:href="@{/menu}"> <button class="btn" type="reset"> Entrar </button></a>
+            </main>
+        </div>
+    </body>
+</html>

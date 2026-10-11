@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Consulta de Vendas - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">CONSULTA DE VENDAS</header>
+            <main class="content">
+                <section class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Email</th>
+                                <th>Senha</th>
+                                <th>Nome</th>
+                                <th>Cargo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaVendas">
+                            <tr th:each="usuario : ${usuarios}">
+                                
+                                <td th:text="${usuario.id}"></td>
+                                <td th:text="${usuario.login}"></td>
+                                <td th:text="${usuario.senha}"></td>
+                                <td th:text="${usuario.nome}"></td>
+                                <td th:text="${usuario.tipo}"></td>
+
+                                <td>
+                                    
+                                    <a th:href="@{/editar/usuario/{id}(id=${usuario.id})}"> <button type="reset">  Editar </button> </a>
+                                </td>
+                                <td>
+                                   <button type="button"
+                                            class="btnExcluir"
+                                            th:data-id="${usuario.id}">
+                                        Excluir
+                                    </button>
+                                </td>
+
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <div class="actions" style="justify-content:flex-start">
+                        <a class="btn outline" th:href="@{/menu/menuConsulta}"> <button class="btn" type="reset"> Sair </button></a>
+                    </div>
+                </section>
+            </main>
+        </div>
+       <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script th:src="@{/js/UsuarioScriptv2.js}"></script>
+    </body>
+</html>

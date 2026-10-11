@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Consulta de Vendas - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">CONSULTA DE VENDAS</header>
+            <main class="content">
+                <section class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Cliente</th>
+                                <th>Observações</th>
+                                <th>Data</th>
+                                <th>Produto</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaVendas">
+                            <tr th:each="item : ${itensVenda}">
+                                
+                                <td th:text="${item.venda.idVenda}"></td>
+                                <td th:text="${item.venda.cliente.nome}"></td>
+                                <td th:text="${item.venda.data}"></td>
+                                <td th:text="${item.venda.observacoes}"></td>
+                                <td th:text="${item.produto.nome}"></td>
+
+                                <td>
+                                    
+                                    <a th:href="@{/editar/vendas/{id}(id=${item.venda.idVenda})}"> <button type="reset">  Editar </button> </a>
+                                </td>
+                                <td>
+                                   <button type="button"
+                                            class="btnExcluir"
+                                            th:data-id="${item.venda.idVenda}">
+                                        Excluir
+                                    </button>
+                                </td>
+
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <div class="actions" style="justify-content:flex-start">
+                        <a class="btn outline" th:href="@{/menu/menuConsulta}"> <button class="btn" type="reset"> Sair </button></a>
+                    </div>
+                </section>
+            </main>
+        </div>
+       <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script th:src="@{/js/VendaScript.js}"></script>
+    </body>
+</html>

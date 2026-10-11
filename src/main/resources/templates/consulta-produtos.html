@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Consulta de Produtos - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">CONSULTA DE PRODUTOS</header>
+            <main class="content">
+                <section class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Categoria</th>
+                                <th>Descrição</th>
+                                <th>Quantidade</th>
+                                <th>Preço</th>
+                                <th>Fornecedor</th>
+                                <th>Taxa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaProdutos">
+                            <tr th:each="associacao : ${associacoes}">
+                                <td th:text="${associacao.produto.id}"></td>
+                                <td th:text="${associacao.produto.nome}"></td>
+                                <td th:text="${associacao.produto.categoria}"></td>
+                                <td th:text="${associacao.produto.observacoes}"></td>
+                                <td th:text="${associacao.produto.quantidade}"></td>
+                                <td th:text="${associacao.produto.preco}"></td>
+                                <td th:text="${associacao.fornecedor.nome}"></td>
+                                <td th:text="${associacao.taxa}+' %'"></td>
+
+                                <td>
+                                    
+                                    <a th:href="@{/editar/produtos/{id}(id=${associacao.produto.id})}"> <button type="reset">  Editar </button> </a>
+                                    </td>
+                                <td>
+                                    <button type="button"
+                                            class="btnExcluir"
+                                            th:data-id="${associacao.produto.id}">
+                                        Excluir
+                                    </button>
+                                </td>
+                                
+                                
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="actions" style="justify-content:flex-start">
+                        <a class="btn outline" th:href="@{/menu/menuConsulta}"> <button class="btn" type="reset"> Sair </button></a>
+                    </div>
+                </section>
+            </main>
+        </div>
+       <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script th:src="@{/js/ProdutoScript.js}"></script>
+    </body>
+</html>

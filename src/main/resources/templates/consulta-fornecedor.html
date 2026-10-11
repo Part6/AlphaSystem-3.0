@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Consulta de Fornecedores - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">CONSULTA DE FORNECEDORES</header>
+            <main class="content">
+                <section class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Localidade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaProdutos">
+                            <tr th:each="fornecedor : ${fornecedores}">
+                                <td th:text="${fornecedor.id}"></td>
+                                <td th:text="${fornecedor.nome}"></td>
+                                <td th:text="${fornecedor.local}"></td>
+                               
+                                <td>
+                                    
+                                    <a th:href="@{/editar/fornecedor/{id}(id=${fornecedor.id})}"> <button type="reset">  Editar </button> </a>
+                                    </td> <!-- tormar cuidado -->
+                                <td>
+                                    <button type="button"
+                                            class="btnExcluir"
+                                            th:data-id="${fornecedor.id}">
+                                        Excluir
+                                    </button>
+                                </td>
+                                
+                                
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="actions" style="justify-content:flex-start">
+                        <a class="btn outline" th:href="@{/menu/menuConsulta}"> <button class="btn" type="reset"> Sair </button></a>
+                    </div>
+                </section>
+            </main>
+        </div>
+       <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script th:src="@{/js/FornecedorScript.js}"></script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 4 de out. de 2026, 09:02:55
+    Author     : Desktop
+*/
+
+body{ 
+  background-color: white; 
+  font-family: Verdana; 
+  color: #505050;
+  
+  
+  margin-top: 250px;
+  margin-bottom: 100px;
+  margin-left:50%;
+      
+} 
+a, a:visited{ 
+  color: #505050; 
+} 

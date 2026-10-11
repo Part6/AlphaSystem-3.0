@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cadastro de Produto - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    <body>
+        <div class="page">
+            <header class="header">CADASTRO DE PRODUTO </header>
+            <main class="content">
+                <section class="panel">
+                    <form id="formProduto"  th:object="${produto}">
+                        <div class="form-grid">
+                            <div class="field">
+                                <label>Nome:</label>
+                                <input id="nome" type="text" th:field="${produto.nome}" placeholder="...">
+                            </div>
+
+                            <div class="field">
+                                <label>Categoria:</label>
+                                <input id="categoria" type="text" th:field="${produto.categoria}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Quantidade:</label>
+                                <input id="qnt" type="number" th:field="${produto.quantidade}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Preço:</label>
+                                <input id="preco" type="number" th:field="${produto.preco}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Descrição:</label>
+                                <textarea id="descricao" th:field="${produto.observacoes}" placeholder="..."></textarea>
+                            </div>
+                            
+                            <div class="field">
+                                <label>Fornecedor:</label>
+                                <select id="fornecedor" name="fornecedor" required>
+                                    <option value="">Selecione um fornecedor</option>
+
+                                    <option th:each="fornecedor : ${fornecedores}"
+                                            th:value="${fornecedor.id}"
+                                            th:text="${fornecedor.nome}">
+                                    </option>
+                                </select>
+                            </div>
+                            
+                            <div class="field">
+                                <label>Taxa:</label>
+                                <input id="taxa" type="number" placeholder="...">
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <a class="btn outline" th:href="@{/menu/menuCadastro}"> <button class="btn" type="reset"> Sair </button></a>
+                            <button class="btn" onclick="limparFormulario('formProduto')">Limpar</button>
+                            <button class="btn" type="submit" >Salvar</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+        <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="/js/script.js"></script>
+        <script src="/js/ProdutoScript.js"></script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Edição de Fornecedores - AlphaSystem </title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">EDIÇÃO DE FORNECEDORES</header>
+            <main class="content"><section class="panel">
+                <form id="formEditarFornecedor" >
+                    <div class="form-grid">
+                        
+                        <input type="hidden" id="id" th:field="${fornecedor.id}">
+                        
+                        <div class="field">
+                            <label>Nome:</label>
+                            <input id="nome" type="text" th:field="${fornecedor.nome}" placeholder="...">
+                        </div>
+                        
+                        <div class="field">
+                            <label>Localização:</label>
+                            <input id="local" type="text" th:field="${fornecedor.local}" placeholder="..."></div>
+                        </div>
+
+                        <div class="actions">
+                            <a class="btn outline" th:href="@{/menu/menuCadastro}"> <button class="btn" type="reset"> Sair </button></a>
+                            <button class="btn" onclick="limparFormulario('formFornecedor')">Limpar</button>
+                            <button class="btn" type="submit" >Salvar</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+         <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="/js/script.js"></script>
+        <script src="/js/FornecedorScript.js"></script>
+    </body>
+</html>

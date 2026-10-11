@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Menu Principal - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header"><h1>CADASTROS</h1></header>
+            <main class="content">
+                <section class="welcome">
+                    <nav class="menu"> 
+                        <a class="btn" th:href="@{/menu/menuCadastro/cadastroCliente}"> <button class="btn" type="reset">Cadastrar Cliente</button></a>
+                        <a class="btn" th:href="@{/menu/menuCadastro/cadastroProduto}"> <button class="btn" type="reset">Cadastrar Produto</button></a>
+                        <a class="btn" th:href="@{/menu/menuCadastro/cadastroFornecedor}"> <button class="btn" type="reset">Cadastrar Fornecedor</button></a>
+                        <a class="btn" th:href="@{/menu/menuCadastro/cadastroUsuario}"> <button class="btn" type="reset">Cadastrar Usuário</button></a>
+                        <a class="btn" th:href="@{/menu/menuCadastro/cadastroVenda}"> <button class="btn" type="reset">Registrar Venda</button></a>
+                        <a class="btn outline" th:href="@{/menu}"> <button class="btn" type="reset"> Sair</button></a>
+                    </nav>
+                </section>
+            </main>
+        </div>
+    </body>
+</html>

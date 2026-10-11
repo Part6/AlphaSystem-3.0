@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Consulta de Clientes - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">CONSULTA DE CLIENTES</header>
+            <main class="content">
+                <section class="table-wrap">
+                    <table >
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Email</th>
+                                <th>Rua</th>
+                                <th>Cidade</th>
+                                <th>Estado</th>
+                                <th>Número da casa</th>
+                                <th>CEP</th>
+
+                            </tr>
+                        </thead>
+                        
+                        <tbody id="tabelaClientes">
+                            <tr th:each="cliente : ${clientes}">
+
+                                <td th:text="${cliente.id}"> </td>
+
+                                <td th:text="${cliente.nome}"> </td>
+
+                                <td th:text="${cliente.cpf}"> </td>
+
+                                <td th:text="${cliente.email}"> </td>
+
+                               <td th:text="${cliente.endereco != null
+                                    ? cliente.endereco.rua : ''}"></td>
+                                
+                                <td th:text="${cliente.endereco != null
+                                    ? cliente.endereco.cidade : ''}"></td>
+
+                                <td th:text="${cliente.endereco != null
+                                    ? cliente.endereco.estado : ''}"></td>
+
+                                <td th:text="${cliente.endereco != null
+                                    ? cliente.endereco.numero : ''}"></td>
+
+                                <td th:text="${cliente.endereco != null
+                                    ? cliente.endereco.cep : ''}"></td>
+
+
+                                <td>
+                                    <a th:href="@{/editar/cliente/{id}(id=${cliente.id})}"> <button type="reset">  Editar </button> </a>
+                                    </td>
+                                <td>
+                                    <button type="button"
+                                            class="btnExcluir"
+                                            th:data-id="${cliente.id}">
+                                        Excluir
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="actions" style="justify-content:flex-start">
+                        <a class="btn outline" th:href="@{/menu/menuConsulta}"> <button class="btn" type="reset"> Sair </button></a>
+                    </div>
+                </section>
+            </main>
+        </div>
+         <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script th:src="@{/js/ClienteScript.js}"></script>
+    </body>
+</html>

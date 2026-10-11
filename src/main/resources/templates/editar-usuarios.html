@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edição de Usuários - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">EDIÇÃO DE USUÁRIOS</header>
+            <main class="content">
+                <section class="panel">
+                    <form id="formEditarUsuario"  th:object="${usuario}" >
+                        <div class="form-grid">
+                            
+                            <input type="hidden" id="id" th:field="${usuario.id}">
+                            
+                            <div class="field">
+                                <label>Nome:</label>
+                                <input id="nome" type="text" th:field="${usuario.nome}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Login:</label>
+                                <input id="email" type="text" th:field="${usuario.login}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Senha:</label>
+                                <input id="senha" type="password" th:field="${usuario.senha}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Cargo:</label>
+                                <select id="cargo" th:field="${usuario.tipo}">
+                                    <option value="">Selecione...</option>
+                                    <option value="Gerente">Gerente</option>
+                                    <option value="Atendente">Atendente</option>
+                                    <option value="Financeiro">Financeiro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <a class="btn outline" th:href="@{/menu/menuCadastro}"> <button class="btn"> Sair </button></a>
+                            <button class="btn" onclick="limparFormulario('formUsuario')">Limpar</button>
+                            <button class="btn" type="submit" >Salvar</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+        <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="/js/script.js"></script>
+        <script src="/js/UsuarioScriptv2.js"></script>
+    </body>
+</html>

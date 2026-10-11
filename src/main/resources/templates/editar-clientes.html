@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edição de clientes - AlphaSystem</title>
+        <link rel="stylesheet" th:href="@{/bootstrap.css/bootstrap.min.css}">
+        <link th:href="@{/css/}+${css}+'.css'" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="page">
+            <header class="header">EDIÇÃO DE CLIENTES</header>
+            <main class="content">
+                <section class="panel">
+                    <form id="formEditarCliente"  th:object="${cliente}">
+                        <div class="form-grid">
+                            
+                            <input type="hidden" id="id" th:field="${cliente.id}" >
+
+                            <div class="field">
+                                <label>Nome:</label>
+                                <input id="nome" type="text" th:field="${cliente.nome}" placeholder="...">
+                            </div>
+
+                            <div class="field">
+                                <label>Rua:</label>
+                                <input id="rua" type="text" th:field="${endereco.rua}" placeholder="...">
+                            </div>
+
+                            <div class="field">
+                                <label>Email:</label>
+                                <input id="email" type="email" th:field="${cliente.email}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Cidade:</label>
+                                <input id="cidade" type="text" th:field="${endereco.cidade}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>CPF:</label>
+                                <input id="cpf" type="text" th:field="${cliente.cpf}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Estado:</label>
+                                <input id="estado" type="text" th:field="${endereco.estado}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>CEP:</label>
+                                <input id="cep" type="text" th:field="${endereco.cep}" placeholder="...">
+                            </div>
+                            
+                            <div class="field">
+                                <label>Número da casa:</label>
+                                <input id="nCasa" type="text" th:field="${endereco.numero}" placeholder="...">
+                            </div>
+                        </div>
+
+                        <div class="actions"> 
+                            <a class="btn outline" th:href="@{/menu/menuCadastro}"> <button class="btn" type="reset"> Sair </button></a>
+                            <button class="btn" onclick="limparFormulario('formEditarCliente')">Limpar</button>
+                            <button class="btn" type="submit" >Salvar</button>
+                        </div>
+
+                    </form>
+                </section>
+            </main>
+        </div>
+        <script th:src="@{/bootstrap.js/bootstrap.min.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script th:src="@{/js/ClienteScript.js}"></script>
+        <script src="/js/script.js"></script>
+    </body>
+</html>
