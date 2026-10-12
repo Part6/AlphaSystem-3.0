@@ -56,10 +56,10 @@ $(document).ready(function () {
 
             data: JSON.stringify(venda),
 
-            success: function (resposta) {
+            success: function () {
 
-                alert("Venda cadastrada! ID: " + resposta.id); ///menu/menuCadastro
-                window.location.href = "menu/menuCadastro"; 
+                alert("Venda cadastrada!"); ///menu/menuCadastro
+                window.location.href = "/menu/menuCadastro"; 
             },
 
             error: function () {

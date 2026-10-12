@@ -73,10 +73,10 @@ $(document).ready(function () {
 
             data: JSON.stringify(produto),
 
-            success: function (resposta) {
+            success: function () {
 
-                alert("Produto cadastrado! ID: " + resposta.id);
-                window.location.href = "menu/menuCadastro"; 
+                alert("Produto cadastrado!");
+                window.location.href = "/menu/menuCadastro"; 
             },
 
             error: function () {

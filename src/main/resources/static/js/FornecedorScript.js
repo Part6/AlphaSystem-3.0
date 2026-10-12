@@ -36,8 +36,8 @@ $(document).ready(function () {
 
             success: function (fornecedorCriado) {
 
-                alert("Fornecedor cadastrado! ID: " + fornecedorCriado.id);
-                window.location.href = "menu/menuCadastro"; 
+                alert("Fornecedor cadastrado!");
+                window.location.href = "/menu/menuCadastro"; 
                 console.log("test2");
             },
 

@@ -50,7 +50,7 @@ $(document).ready(function () {
 
             success: function (usuarioCriado) {
 
-                alert("Usuario cadastrado! ID: " + usuarioCriado.id);
+                alert("Usuario cadastrado!");
                 window.location.href = "/menu/menuCadastro";
                 console.log("test2");
             },
@@ -114,8 +114,8 @@ $(document).ready(function () {
 
             data: JSON.stringify(usuario),
 
-            success: function (resposta) {
-                alert("Usuario cadastrado! ID: " + resposta.id);
+            success: function () {
+                alert("Usuario atualizado!");
                 window.location.href = "/menu/menuGerente/ListaUsuarios"; 
             },
 
